@@ -19,6 +19,10 @@ export class DemodataWithFilterComponent implements OnInit, OnDestroy {
   filteredUsers: IdemoUser[] = [];
   /* store filter value */
   filterTerm = '';
+  /* Default sort field */
+  sortField: string = 'name';
+  /* Default sort direction */
+  sortDirection: 'asc' | 'desc' = 'asc';
   /* subscription */
   subs: Subscription
 
@@ -43,6 +47,24 @@ export class DemodataWithFilterComponent implements OnInit, OnDestroy {
       user.phone.toLowerCase().includes(this.filterTerm.toLowerCase()) ||
       user.website.toLowerCase().includes(this.filterTerm.toLowerCase())
     );
+  }
+
+  /* on Sort button click */
+  onSortChange(field: string): void {
+    this.sortField = field;
+    this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc'; // Toggle sort direction
+    this.filteredUsers = this.sortData(this.filteredUsers);
+  }
+
+  /* sort data logic */
+  sortData(data: IdemoUser[]): IdemoUser[] {
+    return data.sort((a, b) => {
+      const fieldA = a[this.sortField as keyof IdemoUser];
+      const fieldB = b[this.sortField as keyof IdemoUser];
+      if (fieldA < fieldB) return this.sortDirection === 'asc' ? -1 : 1;
+      if (fieldA > fieldB) return this.sortDirection === 'asc' ? 1 : -1;
+      return 0;
+    });
   }
 
   /* on info dialog open */

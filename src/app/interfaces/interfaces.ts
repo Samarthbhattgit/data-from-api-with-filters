@@ -3,13 +3,13 @@ export interface IdemoUser {
     username: string,
     email: string,
     phone: string;
-    website: string;
+    website?: string;
     company?: {
       name: string;
       catchPhrase?: string;
       bs?: string;
     };
-    address: {
+    address?: {
       street?: string,
       suite?: string,
       city?: string,
