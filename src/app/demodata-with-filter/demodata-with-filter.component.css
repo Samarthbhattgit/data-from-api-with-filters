@@ -1,0 +1,37 @@
+.container {
+  padding: 16px;
+}
+
+.filter-field {
+  width: 45%;
+}
+
+.user-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.user-card {
+  width: calc(33% - 16px);
+  box-sizing: border-box;
+  background-color: lightgray;
+}
+
+@media (max-width: 768px) {
+  .user-card {
+    width: calc(50% - 16px);
+  }
+  .filter-field {
+    width: 70%;
+  }
+}
+
+@media (max-width: 480px) {
+  .user-card {
+    width: 100%;
+  }
+  .filter-field {
+    width: 90%;
+  }
+}

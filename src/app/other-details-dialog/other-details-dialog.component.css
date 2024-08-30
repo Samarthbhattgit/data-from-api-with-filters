@@ -1,0 +1,27 @@
+mat-dialog-content {
+padding: 16px;
+}
+
+mat-dialog-actions {
+padding: 8px;
+text-align: right;
+}
+
+@media (max-width: 600px) {
+    mat-dialog-content {
+        font-size: 14px;
+    }
+}
+
+button {
+    position: absolute;
+    right:0px;
+    margin-right: 1%;
+}
+
+.close-icon {
+    position: absolute;
+    right: 0px;
+    margin-right: 1%;
+}
+  
